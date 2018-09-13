@@ -29,7 +29,6 @@ class User < ApplicationRecord
   end
 
   def self.generate_session_token
-
   end
 
   def self.find_by_credentials(email, password) # find by the email
@@ -54,5 +53,5 @@ end
 =begin
   Use self.password_digest to avoid issues, we cannot set @password_digest
   self.session_token = SecureRandom.urlsafe_base64 (random token)
-  
+
 =end

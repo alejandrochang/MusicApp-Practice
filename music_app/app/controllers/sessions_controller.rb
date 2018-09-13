@@ -13,18 +13,25 @@ class SessionsController < ApplicationController
     if user.nil? # if missing, give error
       flash.now[:errors] = ['Invalid credentials'] # error message
       render :new # send them back to login
-    elsif !activated
-
+    elsif !user.activated? # rails method
+      flash.now[:errors] = ['You must activate account first, check email.']
+      render :new
     else
-
+      login!(user) # if its the person, log them in
+      redirect_to root_url #
     end
+     # what is root_url?
   end
-  # should reset session_token and session[:session_token]
-  # redirect them to User#show page, showing that user email
+
 
   def destroy
-    
+    current_user.reset_session_token
+    session[:session_token] = nil
+    redirect_to new_session_url # redirect to sign in page
   end
+
+  # should reset session_token and session[:session_token]
+  # redirect them to User#show page, showing that user email
 end
 
 # user actived a method that rails gives you for free

@@ -1,4 +1,4 @@
-class UsersController < ApplicationRecord
+class UsersController < ApplicationController
   def show
     render :show
   end
@@ -12,7 +12,7 @@ class UsersController < ApplicationRecord
     @user = User.new(user_params) # should be logged in immediately after signing up
 
     if @user.save
-      ApplicationMailer.activation_email(@user).deliver_now!
+      # ApplicationMailer.activation_email(@user).deliver_now!
       flash[:notice] = 'Succesfully created an account!'
       redirect_to new_session_url
       # logs in immediately

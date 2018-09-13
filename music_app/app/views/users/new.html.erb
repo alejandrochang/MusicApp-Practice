@@ -1,0 +1,32 @@
+
+<h3>Welcome to streamify!</h3>
+<br>
+
+<a class="button" href=<%= new_session_url %> >Go to sign-in </a>
+
+<form class="form" action=" <%= users_url %>" method="post">
+  <input
+  type="hidden"
+  name="authenticity_token"
+  value="<%= form_authenticity_token %>">
+
+  <label for="new-user-email">Email: </label>
+  <input id="new-email" type="text" name="user[email]">
+
+  <br>
+  <label for="new-user-password">Password: </label>
+  <input id="password" type="text" name="user[password]">
+
+  <input type="submit" value="Submit">
+</form>
+
+<!--
+1) heading title
+2) button
+3) form + input
+4) label + input
+5) label + input
+6) submit
+
+
+ -->
